@@ -1,0 +1,1 @@
+Designed and implemented a responsive web-based calculator using HTML, CSS, and JavaScript and Bootstrap. Integrated core calculator functionalities, including addition, subtraction, multiplication, division, decimal operations, and a backspace feature. Added robust error handling to prevent invalid calculations, displaying user-friendly error messages.
