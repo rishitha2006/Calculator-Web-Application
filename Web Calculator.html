@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right,rgb(82, 82, 156), rgb(120, 202, 120));
+        padding: 50px;
+      }
+      
+      .calculator {
+        max-width: 300px;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 30px;
+        box-shadow: 6px 6px 4px rgba(0, 0, 0, 1);
+        background-color: rgba(0, 0, 0, 0.568);
+      }
+      #clear{
+        width: 115px;
+      }
+      .result {
+        background-color: gainsboro;
+        border: 1px solid gray;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        padding: 10px;
+        text-align: right;
+      }
+      .btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4" >
+      <div class="calculator">
+        <div class="result" id="result">0</div>
+        <div class="row">
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(7)">7</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(8)">8</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(9)">9</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="appendOperator('+')"><b>+</b></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(4)">4</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(5)">5</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(6)">6</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="appendOperator('-')"><b>-</b></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(1)">1</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(2)">2</button>
+          </div>
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(3)">3</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;"  onclick="appendOperator('*')"><b>x</b></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button class="btn btn-secondary mb-3" onclick="appendNumber(0)">0</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="appendOperator('.')"><b>.</b></button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="calculate()">=</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="appendOperator('/')"><b>/</b></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="appendOperator('00')">00</button>
+          </div>
+          <div class="col-3">
+            <button class="btn mb-3" style="background-color: black;  color: whitesmoke;" onclick="backspace()">←</button>
+          </div>
+          <div class="col-6">
+            <button id="clear" class="btn btn-primary mb-3" onclick="clearCalculator()">CLEAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      let expression = "";
+      let resultElement = document.getElementById("result");
+
+      function appendNumber(num) {
+        expression += num;
+        resultElement.innerText = expression;
+      }
+
+      function appendOperator(operator) {
+        expression += operator;
+        resultElement.innerText = expression;
+      }
+
+      function calculate() {
+        try {
+          const result = eval(expression);
+          expression = result.toString();
+          resultElement.innerText = expression;
+        } catch (error) {
+          expression = "";
+          resultElement.innerText = "Error";
+        }
+      }
+
+      function clearCalculator() {
+        expression = "";
+        resultElement.innerText = "0";
+      }
+
+      function backspace() {
+        expression = expression.slice(0, -1);
+        resultElement.innerText = expression;
+      }
+    </script>
+  </body>
+</html>
+ 
+
+ 
